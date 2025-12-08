@@ -1,0 +1,1312 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+ --GL_L_purple: #c28df7;
+ --GL_D_purple: #663399;
+ --GL_L_green: rgb(131, 189, 131);
+ --GL_D_green: rgb(24, 118, 24);
+ --GL_L_blue: rgb(109, 109, 219);
+ --GL_white: white;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background: var(--GL_white);
+  color: #333;
+}
+
+.site-header {
+  background: white;
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* logo on left, nav on right */
+}
+
+.logo-link {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.logo {
+  display: block;
+  width: auto;
+  height: 85px; 
+}
+
+.nav-links {
+  display: flex;
+  gap: 4rem; /* space between buttons */
+  align-items: center;
+  min-height: 110px;     
+}
+
+.nav-link {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  font-size: 1.5rem; /* make text larger */
+  cursor: pointer;
+  font-family: 'Georgia', serif; /* change font here */
+}
+
+.nav-link:hover {
+  color: var(--GL_D_purple);           /* brand color on hover */
+}
+
+.content {
+  max-width: 1000px;       /* keeps content from being too wide */
+  margin: 2rem auto;      /* centers content horizontally, adds top/bottom space */
+  padding: 1rem;          /* space inside content box */
+  background: white;      /* content box is white */
+  border-radius: 8px;     /* rounded corners */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* subtle shadow */
+}
+
+.content-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.header-placeholder {
+  min-height: 110px; /* reserves space before header loads */
+}
+
+/* 1) Positioning for top level and nested levels */
+.menu-item,
+.submenu li.has-submenu { position: relative; }
+
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  list-style: none;
+  display: none;
+  z-index: 100;
+}
+
+/* NESTED panels open to the right of their parent item */
+.submenu li.has-submenu > .submenu {
+  top: -1px;
+  left: 100%;
+  margin-left: 0;   /* tiny overlap removes the "gap" that causes flicker */
+}
+
+/* 2) Only open the submenu of the item you're actually hovering */
+.has-submenu:hover > .submenu { display: block; }      /* top level */
+.submenu li.has-submenu:hover > .submenu { display: block; } /* nested */
+
+/* 3) Make the link area solid and easy to hit */
+.submenu a,
+.submenu .submenu-trigger,
+.nav-link { 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  white-space: nowrap;
+  color: #222;
+  text-decoration: none;
+}
+
+.submenu a:hover { background: #f5f5f5; }
+
+/* 4) Arrows – flip only for the hovered/open branch */
+.chev {
+  display: inline-block;
+  width: 0; height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid currentColor; /* ▼ */
+  margin-left: 0.35rem;
+  position: relative; top: -2px;
+  transition: transform 150ms ease;
+}
+
+.chev-right {
+  display: inline-block;
+  width: 0; height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 6px solid currentColor; /* ▶ */
+  margin-left: 0.35rem;
+  position: relative; top: -1px;
+  transition: transform 150ms ease;
+}
+
+/* Flip only the active branch arrows */
+.menu-item:hover   > .nav-link .chev         { transform: rotate(180deg); } /* ▼→▲ */
+.menu-item.open    > .nav-link .chev         { transform: rotate(180deg); }
+.submenu li.has-submenu:hover > .submenu-trigger .chev-right { transform: rotate(90deg); } /* ▶→▼ */
+.submenu li.has-submenu.open  > .submenu-trigger .chev-right { transform: rotate(90deg); }
+
+/* container for movement section */
+.move {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* the image itself */
+.move-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* fill the box */
+  object-position: center 55%;    /* ← THIS centers the important part */
+}
+
+.full-photo-block-home {
+  width: 100%;
+  height: 350px; 
+  overflow: hidden;
+}
+
+.full-photo-row {
+  width: 100%;         /* same height as your main hero */
+  display: flex;          /* puts the images side-by-side */
+}
+
+.stretch-img {
+  width: 100%;             /* each image gets half the screen */
+  height: 600px;           /* same height */
+  object-fit: cover;      /* crop correctly */
+  object-position: center; /* keep the important part visible */
+  display: block;
+}
+
+.stretch-img-pumps {
+  width: 100%;             /* each image gets half the screen */
+  height: 500px;           /* same height */
+  object-fit: cover;      /* crop correctly */
+  object-position: center 1%; /* keep the important part visible */
+  display: block;
+}
+
+.photo-block {
+  flex: 1;            /* each takes up 50% of the row */
+  text-align: center;
+}
+
+.photo-label {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  color: #333;
+}
+
+.single-centered-photo {
+  width: 100%;
+  display: flex;
+  justify-content: center;   /* horizontal centering */
+  overflow: hidden;
+}
+
+.single-centered-photo-img {
+  width: 20%;                 /* 50% of the page */
+  height: 300px;              /* same height you used */
+  object-fit: cover;          /* crop correctly */
+  object-position: center;    /* center the subject */
+  display: block;
+}
+
+video {
+  display: block;
+}
+
+/* the text under the image */
+.move-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Slide from LEFT → RIGHT */
+.slide-right {
+  animation: slideInFromLeft 0.8s ease-out forwards;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Slide from RIGHT → LEFT */
+.slide-left {
+  animation: slideInFromRight 0.8s ease-out forwards;
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* -----------------------------------------
+   FAQ PAGE LAYOUT
+------------------------------------------*/
+
+/* Main wrapper for FAQ page */
+.faq-main {
+  margin-bottom: 3rem;
+}
+
+/* GREEN TITLE BAR */
+.faq-header-bar {
+  background: var(--GL_L_green);
+  padding: 1.2rem 0;
+  color: #fff;
+}
+
+.faq-header-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.faq-header-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+}
+
+/* FULL-WIDTH IMAGE (NOT IN BUBBLE) */
+.faq-fullwidth-image-wrap {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Taller image, centered higher to show more face/head */
+.faq-fullwidth-image {
+  width: 100%;
+  height: 550px;            /* adjust up/down as needed */
+  object-fit: cover;
+  object-position: center 15%;  /* move crop upward to show more head */
+  display: block;
+}
+
+/* WHITE FAQ PANEL (REUSES .content FOR SHARED STYLES) */
+/* .content already sets: 
+   max-width: 1000px, margin, background, border-radius, box-shadow */
+.faq-panel {
+  /* override just what we want different from default .content */
+  margin-top: 1.5rem;          /* space below image */
+  padding: 2rem 1.2rem;        /* a bit more padding than default */
+}
+
+/* FAQ LIST STYLING */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faq-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+}
+
+/* Clickable question */
+.faq-question-btn {
+  width: 100%;
+  border: none;
+  background: #f7f9fc;
+  padding: 1rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Question text */
+.faq-question-text {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Plus/minus icon */
+.faq-icon {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--GL_D_purple);
+}
+
+/* Answer panel (hidden by default) */
+.faq-answer {
+  max-height: 0;
+  opacity: 0;
+  padding: 0 1.2rem;
+  transition:
+    max-height 0.3s ease,
+    opacity 0.3s ease,
+    padding-top 0.3s ease,
+    padding-bottom 0.3s ease;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Open answer */
+.faq-item.open .faq-answer {
+  max-height: 500px;
+  opacity: 1;
+  padding-top: 0.75rem;
+  padding-bottom: 1rem;
+}
+
+.faq-item.open .faq-question-btn {
+  background: #eef1ff;
+}
+
+/* -----------------------------------------
+   Legal / Privacy Pages (uses FAQ layout)
+------------------------------------------*/
+
+.legal-panel {
+  line-height: 1.7;
+  font-size: 0.98rem;
+}
+
+/* Effective date line */
+.legal-meta {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+/* Headings inside legal content */
+.legal-panel h2 {
+  font-size: 1.6rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.legal-panel h3 {
+  font-size: 1.25rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.legal-panel h4 {
+  font-size: 1.05rem;
+  margin-top: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Lists inside the legal panel */
+.legal-panel ul {
+  margin: 0.5rem 0 0.75rem 1.4rem;
+}
+
+/* -----------------------------------------
+   PRIVACY PRACTICES PAGE HERO IMAGE
+------------------------------------------*/
+
+.privacy-hero-img {
+  width: 100%;
+  height: 550px;           /* You can adjust this */
+  object-fit: cover;
+
+  /* Move visible crop downward to show the person */
+  object-position: center 50%;  
+
+  display: block;
+}
+
+/* -----------------------------------------
+   PARACHUTE PAGE STYLING
+------------------------------------------*/
+
+.parachute-main {
+  margin-bottom: 4rem;
+}
+
+/* Logo section */
+.parachute-logo-wrap {
+  text-align: center;
+  padding: 2rem 0 1rem;
+}
+
+.parachute-logo {
+  width: 380px;
+  max-width: 90%;
+  height: auto;
+}
+
+/* Paragraph section */
+.parachute-description {
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #333;
+  padding: 0 1rem;
+}
+
+/* Two-column layout */
+.parachute-columns {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* Individual column */
+.parachute-col {
+  flex: 1;
+  min-width: 300px;
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+.left-col {
+  background: #e6e6e6;  /* Light gray */
+}
+
+.right-col {
+  background: #3b1d53;  /* Deep purple */
+  color: white;
+}
+
+/* Heading inside columns */
+.parachute-col h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  max-width: 450px;
+  margin: 0 auto;
+  line-height: 1.4;
+}
+
+/* Decorative line under headings */
+.line {
+  width: 180px;
+  height: 4px;
+  background: #3b1d53;
+  margin: 1.25rem auto 2rem;
+  border-radius: 4px;
+}
+
+.line.dark {
+  background: white;
+}
+
+/* Buttons */
+.parachute-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+/* Left button */
+.left-btn {
+  background: #3b1d53;
+  color: white;
+}
+
+.left-btn:hover {
+  background: #2a133d;
+}
+
+/* Right button */
+.right-btn {
+  background: white;
+  color: #3b1d53;
+}
+
+.right-btn:hover {
+  background: #dcdcdc;
+}
+
+.parachute-lower-text {
+  max-width: 1000px;
+  margin: 3rem auto;
+  text-align: center;
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: #333;
+  padding: 0 1.5rem;
+}
+
+/* -----------------------------------------
+   OUR PROCESS PAGE – HERO + 4 STEP CARDS
+------------------------------------------*/
+
+.process-page {
+  background: linear-gradient(to bottom, #f5f8fc 0%, #ffffff 40%);
+}
+
+/* HERO */
+.process-hero {
+  padding: 3.5rem 1.25rem 2.5rem;
+}
+
+.process-hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.process-pill {
+  display: inline-block;
+  padding: 0.4rem 1.4rem;
+  border-radius: 999px;
+  background: rgba(109, 109, 219, 0.1); /* GL_L_blue, light */
+  color: var(--GL_L_blue);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.process-hero-title {
+  font-size: 2.4rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.process-hero-title span {
+  color: var(--GL_L_blue);
+  display: block;
+}
+
+.process-hero-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #555;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* STEPS SECTION */
+.process-steps-section {
+  padding: 1rem 1.25rem 4rem;
+}
+
+.process-steps-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.process-steps-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.process-steps-header h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.process-steps-header p {
+  max-width: 650px;
+  margin: 0 auto;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* GRID OF CARDS */
+.process-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.8rem;
+}
+
+/* INDIVIDUAL CARD */
+.process-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.6rem 1.5rem 1.7rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  border: 1px solid #e1e5ee;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: process-card-in 0.7s ease-out forwards;
+}
+
+/* staggered animation */
+.process-card:nth-child(1) { animation-delay: 0.1s; }
+.process-card:nth-child(2) { animation-delay: 0.25s; }
+.process-card:nth-child(3) { animation-delay: 0.4s; }
+.process-card:nth-child(4) { animation-delay: 0.55s; }
+
+.process-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.process-step-badge {
+  padding: 0.25rem 0.9rem;
+  border-radius: 999px;
+  background: var(--GL_L_green);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.process-card-title {
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.process-card-text {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+/* Hover lift */
+.process-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.10);
+}
+
+/* entrance animation */
+@keyframes process-card-in {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Small screen tweaks */
+@media (max-width: 600px) {
+  .process-hero-title {
+    font-size: 2rem;
+  }
+
+  .process-card-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ============================================================
+   OUR PROCESS PAGE — BACKGROUND HERO + 4 CARD STYLES
+   ============================================================ */
+
+.process-page {
+  width: 100%;
+  overflow-x: hidden;
+  background: #ffffff;
+}
+
+/* ---------- BACKGROUND IMAGE HERO ---------- */
+.process-bg-section {
+  background-image: url("images/Bio Compression Systems 09-2025/SC-2008-DL Images/G8-3045_2008DL_Double_Cliff_0522_0103 - (8 Chamber Bilateral Full Leg Garments).jpg"); /* ← replace with real image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 4rem 1.25rem 7rem;
+  position: relative;
+  color: #ffffff;
+}
+
+/* dark overlay */
+.process-bg-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.38);
+  z-index: 1;
+}
+
+.process-bg-section > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- HERO TEXT ---------- */
+.process-hero-inner {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2.5rem;
+}
+
+.process-pill {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  font-size: 0.85rem;
+  border-radius: 999px;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+
+.process-hero-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+.process-hero-title span {
+  color: #cdeaff;
+}
+
+.process-hero-subtitle {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 760px;
+  margin: 0 auto;
+  color: #ffffff;       /* ← FORCE PURE WHITE */
+  opacity: 1;           /* ← REMOVE FADING */
+}
+
+
+/* ---------- HEADER UNDER HERO ---------- */
+.process-steps-header {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.process-header-overlay h2 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: #ffffff;
+}
+
+.process-header-overlay p {
+  font-size: 1.05rem;
+  max-width: 700px;
+  margin: 0.5rem auto 0;
+  color: #f1f1f1;
+  opacity: 0.95;
+}
+
+/* ============================================================
+   WHITE SHELF FOR CARDS
+   ============================================================ */
+.process-steps-section {
+  background: #ffffff;
+  margin-top: -3.5rem;
+  padding: 4rem 1.25rem;
+  border-radius: 22px 22px 0 0;
+  position: relative;
+  z-index: 10;
+}
+
+.process-steps-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   4 CARD GRID
+   ============================================================ */
+.process-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+/* ---------- Individual Card ---------- */
+.process-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1.8rem 1.5rem;
+  border: 1px solid #e3e3e3;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  /* fade-in + slide animation */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: process-card-in 0.7s ease-out forwards;
+}
+
+.process-card:nth-child(1) { animation-delay: 0.05s; }
+.process-card:nth-child(2) { animation-delay: 0.2s; }
+.process-card:nth-child(3) { animation-delay: 0.35s; }
+.process-card:nth-child(4) { animation-delay: 0.5s; }
+
+@keyframes process-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.process-step-badge {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background: var(--GL_L_green, #4CAF50);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.process-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #222;
+  margin: 0;
+}
+
+.process-card-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+  margin: 0;
+}
+
+/* ---------- Responsive Layout ---------- */
+@media (max-width: 900px) {
+  .process-steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .process-steps-grid {
+    grid-template-columns: 1fr;
+  }
+  .process-hero-title {
+    font-size: 1.9rem;
+  }
+  .process-header-overlay h2 {
+    font-size: 1.7rem;
+  }
+}
+
+/* ============================================================
+   HOMEPAGE – LAYOUT & STYLING
+   ============================================================ */
+
+.home-page {
+  background: #f4faf8; /* soft mint background */
+  color: #111;
+}
+
+/* ------------ HERO SECTION ------------ */
+
+.home-hero {
+  max-width: 1200px;
+  margin: 2.5rem auto 3.5rem;
+  padding: 2.5rem 2rem;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  border-radius: 24px;
+  background: radial-gradient(circle at top left, #ffffff, #e8f6f2);
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.07);
+}
+
+/* left side text */
+.hero-left h1 {
+  font-size: 2.6rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.hero-left p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 1.8rem;
+  color: #333;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.98rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+/* HERO BUTTON WRAPPER */
+.hero-buttons {
+    display: flex;
+    justify-content: center;  /* center horizontally */
+    margin-top: 30px;
+}
+
+/* MAIN GREEN BUTTON */
+.btn-primary {
+    display: inline-block;
+    background-color: #0a7518; /* your green */
+    color: #ffffff;
+    padding: 18px 60px;       /* wider button */
+    min-width: 300px;         /* makes the button bigger */
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: 50px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* HOVER EFFECT */
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+.btn-outline {
+  background: transparent;
+  color: var(--GL_D_green);
+  border: 1px solid rgba(24, 118, 24, 0.6);
+}
+
+.btn-outline:hover {
+  background: rgba(24, 118, 24, 0.08);
+}
+
+/* right side image */
+.hero-right {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-right img {
+  width: 100%;
+  max-width: 460px;
+  border-radius: 24px;
+  object-fit: cover;
+  object-position: center top;  /* shows entire person’s face/body better */
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
+}
+
+
+/* ------------ SECTION HEADERS ------------ */
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 2.2rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* ============================================================
+   SERVICES GRID
+   ============================================================ */
+
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.7rem;
+}
+
+.service-card {
+  background: #f0faf6;
+  border-radius: 18px;
+  padding: 1.6rem 1.5rem 1.7rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+  border: 1px solid #ddf1e7;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.icon-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(24, 118, 24, 0.12);
+  margin-bottom: 0.5rem;
+}
+
+.service-card h3 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.service-card p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* ============================================================
+   WHY CHOOSE SECTION
+   ============================================================ */
+
+.why-section {
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  padding: 2.5rem 2rem;
+  display: grid;
+  grid-template-columns: 1.1fr 1.2fr;
+  gap: 2.5rem;
+  align-items: center;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #f4faf8, #e5f3ff);
+  box-shadow: 0 20px 36px rgba(0, 0, 0, 0.06);
+}
+
+.why-image img {
+  width: 100%;
+  border-radius: 24px;
+  object-fit: cover;
+  object-position: center; /* centers the arm garment photo perfectly */
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.18);
+}
+
+
+.why-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.why-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.why-list li {
+  font-size: 0.99rem;
+  margin-bottom: 0.6rem;
+  color: #333;
+}
+
+/* ============================================================
+   CONTACT SECTION (VISUAL ONLY)
+   ============================================================ */
+
+.contact-section {
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  padding: 0 1.5rem 3rem;
+}
+
+.contact-wrapper {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+.contact-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.contact-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e4f3ee;
+  font-size: 1.4rem;
+}
+
+.contact-item h4 {
+  margin: 0 0 0.2rem;
+  font-size: 1rem;
+}
+
+.contact-item p {
+  margin: 0;
+  font-size: 0.97rem;
+}
+
+/* right side – fake form */
+.contact-right {
+  background: #f4faf8;
+  border-radius: 18px;
+  padding: 1.7rem 1.6rem;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.05);
+  border: 1px solid #ddebe5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.fake-input,
+.fake-textarea {
+  background: #edf7f3;
+  border-radius: 999px;
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  color: #777;
+}
+
+.fake-textarea {
+  border-radius: 16px;
+  min-height: 130px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.fake-submit {
+  margin-top: 0.4rem;
+  background: var(--GL_D_green);
+  color: #fff;
+  text-align: center;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: default; /* visual only */
+}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS
+   ============================================================ */
+
+@media (max-width: 960px) {
+  .home-hero {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
+  }
+
+  .hero-right {
+    order: -1; /* image above text on smaller screens */
+  }
+
+  .why-section {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
+  }
+
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-left h1 {
+    font-size: 2.1rem;
+  }
+
+  .why-content h2 {
+    font-size: 1.8rem;
+  }
+}
+
+
+/* Full-width light green background for the entire services area */
+.services-section {
+    width: 100%;
+    background: #c8f1d4; /* slightly greener than before (#dbf5e3 → #c8f1d4) */
+    padding: 90px 0 100px;
+    margin-top: 60px;
+}
+
+/* Inner container so cards stay centered and aligned properly */
+.services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Make sure the grid stays exactly as before */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.7rem;
+    margin-top: 40px;
+}
+
+/* Fade-in animation */
+.services-section {
+    animation: fadeIn 1.2s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE layout stays the same */
+@media (max-width: 960px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
