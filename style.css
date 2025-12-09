@@ -1139,14 +1139,14 @@ video {
 .contact-section {
   max-width: 1200px;
   margin: 0 auto 4rem;
-  padding: 0 1.5rem 3rem;
+  padding: 0 1.5rem 1.5rem;
 }
 
 .contact-wrapper {
   margin-top: 1.5rem;
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
-  gap: 2.5rem;
+  gap: 1.5rem;
   align-items: flex-start;
 }
 
@@ -1309,4 +1309,708 @@ video {
     .services-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* ============================
+   FOOTER #1 — DISCLAIMER
+   ============================ */
+
+.footer-disclaimer {
+  width: 100%;
+  background: #f2f2f2;
+  padding: 18px 20px;
+  text-align: center;
+  font-size: 0.99rem;
+  color: #555;
+  border-top: 1px solid #ddd;
+}
+
+.footer-disclaimer p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* FORCE purple + bold */
+.disclaimer-label {
+  font-weight: 700 !important;
+  color: #6a1b9a !important;   /* strong purple */
+}
+
+/* ============================
+   SECOND FOOTER (MAIN FOOTER)
+   ============================ */
+
+.footer-main {
+  background: #004273;              /* deep blue footer background */
+  color: #ffffff;
+  padding: 3rem 0 2.5rem;
+  margin-top: 0rem;
+}
+
+.footer-main-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+/* left block: image + sentence */
+.footer-main-left {
+  flex: 1.2;
+}
+
+.footer-main img {
+    width: 200px;       /* adjust size */
+    height: auto;
+    display: block;
+    margin: 0 auto 1rem -0px;
+    border-radius: 0;   /* ensures no rounded white edges */
+}
+
+.footer-main-tagline {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  max-width: 360px;
+}
+
+/* right side – columns */
+.footer-main-right {
+  flex: 2;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.8rem;
+}
+
+.footer-col-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+  color: var(--GL_L_purple, #c28df7);
+}
+
+/* links list */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.35rem;
+}
+
+.footer-links a {
+  color: #f5f8fb;
+  text-decoration: none;
+  font-size: 0.96rem;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* contact list */
+.footer-contact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-contact li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 0.55rem;
+  font-size: 0.96rem;
+}
+
+.footer-contact-icon {
+  width: 24px;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 1px;
+}
+
+/* social icons */
+.footer-social {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.social-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8b84f;            /* warm accent like example */
+  color: #004273;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.social-circle:hover {
+  filter: brightness(1.05);
+}
+
+/* responsive footer */
+@media (max-width: 900px) {
+  .footer-main-inner {
+    flex-direction: column;
+  }
+
+  .footer-main-right {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-main-img,
+  .footer-main-tagline {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-main-right {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================
+   HISTORY PAGE LAYOUT
+   ============================ */
+
+.history-page {
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  padding: 3rem 1.5rem 0;
+}
+
+/* top title */
+.history-hero {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.history-title {
+  text-align: center;
+  font-size: 4.0rem;
+  margin: 0 0 0.5rem;
+  font-family: "Snell Roundhand", "Lucida Handwriting", cursive;
+}
+
+
+.history-subtitle {
+  text-align: center;
+  font-size: 1.9rem;
+  margin: 0;
+}
+
+/* each row wrapper */
+.history-row {
+  margin-bottom: 3rem;
+}
+
+/* inner grid container */
+.history-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+/* reverse layout row */
+.history-row--reverse .history-inner {
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
+}
+
+.history-row--reverse .history-image {
+  order: 2;
+}
+.history-row--reverse .history-text {
+  order: 1;
+}
+
+/* image side */
+.history-image img {
+  width: 100%;
+  border-radius: 24px;
+  object-fit: cover;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* text side */
+.history-text h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.6rem;
+}
+
+.history-text p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+/* mission statement block */
+.mission-block {
+  margin: 1rem 0 4rem;
+  padding: 2.2rem 2rem;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #f5f9ff, #e4efff);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.06);
+  text-align: left;
+}
+
+.mission-block h2 {
+  margin: 0 0 0.9rem;
+  font-size: 1.8rem;
+}
+
+.mission-block p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* FULL-WIDTH light green background for the second history section */
+.history-row--green {
+  background: #e9f7ec; /* light soft green */
+  /* bleed out of the 1200px container to full viewport width */
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 4rem 0; /* vertical spacing */
+}
+
+/* keep the content centered inside the green band */
+.history-row--green .history-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* responsive tweaks */
+@media (max-width: 900px) {
+  .history-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .history-row--reverse .history-image,
+  .history-row--reverse .history-text {
+    order: initial;
+  }
+}
+
+@media (max-width: 640px) {
+  .history-page {
+    padding-top: 2rem;
+  }
+
+  .history-title {
+    font-size: 2rem;
+  }
+}
+
+.history-top {
+  background: linear-gradient(to bottom, #f2faf5, #ffffff 70%);
+  padding: 1rem 1.5rem 2rem;
+}
+
+/* ============================
+   PCD HERO
+   ============================ */
+
+.pcd-hero {
+  width: 100%;
+  height: 380px;
+  background-image: url("images/Bio Compression Systems 09-2025/SC-4008-DL Images/G8-3045_4008DL_Annalyce_0088 - (w-Bilateral Leg Garments).jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pcd-hero-overlay {
+  background: rgba(0, 0, 0, 0.45);
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+.pcd-hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.pcd-hero-subtitle {
+  font-size: 1.2rem;
+  max-width: 750px;
+  line-height: 1.6;
+}
+
+/* ============================
+   PCD CARDS (BIG BUTTONS)
+   ============================ */
+
+.pcd-cards {
+  max-width: 1100px;
+  margin: 3rem auto 3.5rem;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.pcd-cards-title {
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+}
+
+.pcd-cards-subtitle {
+  font-size: 1rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto 1.6rem;
+}
+
+.pcd-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+
+.pcd-card {
+  background: #f8faf9;
+  padding: 1.4rem 1.4rem 1.6rem;
+  border-radius: 18px;
+  text-decoration: none;
+  color: #222;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pcd-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.14);
+}
+
+.pcd-card-img {
+  width: 100%;
+  border-radius: 14px;
+  margin-bottom: 0.2rem;
+  object-fit: cover;
+  max-height: 190px;
+}
+
+.pcd-card h3 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.pcd-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+/* ============================
+   PCD MAIN TEXT
+   ============================ */
+
+.pcd-content {
+  max-width: 1100px;
+  margin: 0 auto 4rem;
+  padding: 0 1.5rem;
+}
+
+.pcd-text-block p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1.3rem;
+  color: #333;
+}
+
+.pcd-subheader {
+  margin-top: 2.2rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.pcd-contra {
+  margin-top: 1.8rem;
+  background: #fff5f5;
+  padding: 1rem 1.1rem;
+  border-left: 4px solid #cc0000;
+  border-radius: 6px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .pcd-hero-title {
+    font-size: 2.3rem;
+  }
+
+  .pcd-hero-subtitle {
+    font-size: 1.05rem;
+  }
+}
+
+/* ============================
+   NCD IMAGE GALLERY
+   ============================ */
+
+.ncd-gallery {
+  max-width: 900px;
+  margin: 3rem auto 4rem;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.ncd-item {
+  text-align: center;
+}
+
+.ncd-img {
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+  margin-bottom: 0.6rem;
+  object-fit: cover;
+}
+
+.ncd-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* ============================
+   COMPRESSION GARMENTS HERO
+   ============================ */
+
+.cg-hero {
+  width: 100%;
+  height: 360px;
+  background-image: url("images/garments_hero.jpg"); /* replace with your garment hero image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cg-hero-overlay {
+  background: rgba(0, 0, 0, 0.45);
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+.cg-hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.cg-hero-subtitle {
+  font-size: 1.15rem;
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+/* ============================
+   GARMENT CARDS (DAY/NIGHT)
+   ============================ */
+
+.cg-cards {
+  max-width: 1100px;
+  margin: 3rem auto 3.5rem;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.cg-cards-title {
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+}
+
+.cg-cards-subtitle {
+  font-size: 1rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto 1.6rem;
+}
+
+.cg-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+
+.cg-card {
+  background: #f8faf9;
+  padding: 1.4rem 1.4rem 1.6rem;
+  border-radius: 18px;
+  text-decoration: none;
+  color: #222;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cg-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.14);
+}
+
+.cg-card-img {
+  width: 100%;
+  border-radius: 14px;
+  margin-bottom: 0.2rem;
+  object-fit: cover;
+  max-height: 190px;
+}
+
+.cg-card h3 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.cg-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+/* ============================
+   GARMENT MAIN TEXT
+   ============================ */
+
+.cg-content {
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  padding: 0 1.5rem;
+}
+
+.cg-text-block p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 0;
+  color: #333;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .cg-hero-title {
+    font-size: 2.3rem;
+  }
+
+  .cg-hero-subtitle {
+    font-size: 1.05rem;
+  }
+}
+
+/* =============================
+   GARMENT HERO (Day/Night)
+   ============================= */
+
+.garment-hero {
+  width: 100%;
+  height: 300px;
+  background-image: url("images/garments_hero.jpg"); /* Replace if needed */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.garment-hero-overlay {
+  background: rgba(0,0,0,0.45);
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.garment-hero-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.garment-hero-subtitle {
+  max-width: 700px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* =============================
+   PHOTO GRID
+   ============================= */
+
+.garment-gallery {
+  max-width: 1100px;
+  margin: 3rem auto 4rem;
+  padding: 0 1.5rem;
+}
+
+.garment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.garment-photo img {
+  width: 100%;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.garment-caption {
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 0.6rem;
+  font-weight: 600;
 }
