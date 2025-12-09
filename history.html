@@ -3,32 +3,172 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Site</title>
+  <title>Our History | Great Lakes Medical Equipment</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+  <!-- shared header -->
   <div id="header" class="header-placeholder"></div>
   <script src="header.js" defer></script>
-  <!-- New placeholder content -->
-  <main>
-    <div class="full-photo-block-home">
-      <img src="images/Bio Compression Systems 09-2025/SC-4008-DL Images/G8-3045_4008DL_Annalyce_0088 - (w-Bilateral Leg Garments).jpg" 
-      alt="Home Page Photo" class="move-img">
-    </div>
-    <div class="content">
-      <p>Great Lakes Medical Equipment, Inc. has specialized since 1992 in supplying high-quality
-        compression therapy products and service to patients in Michigan.
-        Great Lakes utilizes trained compression therapy fitters with many years of experience working
-        with lymphatic and venous disorder patients. We provide education and support on an individual
-        basis to enhance the results of treatment and improve the patient's quality of life.
-        Great Lakes is dedicated to servicing the patient and physician or therapist with delivery,
-        support, education, and insurance reimbursement information. In addition to BioCompression
-        compression devices for lymphedema, chronic venous insufficiency, non-healing wounds,
-        arterial insufficiency and deep vein thrombosis, we supply both daytime compression garments
-        and inelastic wraps and well as a variety of nighttime garments.</p>
-        
-    </div>
+
+  <main class="history-page">
+
+    <!-- Top title / intro -->
+     
+    <section class="history-hero">
+      <div class="history-top">
+      <h1 class="history-title">Our Story</h1>
+      <p class="history-subtitle">
+        Over 30 years of specialized compression therapy care for patients across Michigan.
+      </p>
+      </div>
+    </section>
+
+    <!-- ROW 1: image LEFT, text RIGHT -->
+    <section class="history-row">
+      <div class="history-inner">
+        <div class="history-image">
+          <!-- swap this to whatever photo you want -->
+          <img src="images/Bio Compression Systems Images 11-2025/Bio Compression Systems Images 11-2025/IC-BAP-DL Bio Arterial Plus Images/IC_BAP_DL_MD_IF_118_46127 (1).jpg" alt="Great Lakes Medical office exterior">
+        </div>
+        <div class="history-text">
+          <h2>Founded in 1992</h2>
+          <p>
+            Great Lakes Medical Equipment, Inc. has specialized since 1992 in supplying high-quality
+            compression therapy products and service to patients in Michigan.
+          </p>
+        </div>
+      </div>  
+    </section>
+    <!-- ROW 2: image RIGHT, text LEFT -->
+    <section class="history-row history-row--reverse history-row--green">
+      <div class="history-inner">
+        <div class="history-image">
+          <img src="images/Bio Compression Systems 09-2025/SC-4008-DL Images/GBA-3045_4008DL_0522_Annalyce (Bio Abdominal Garment).jpg" alt="Clinician fitting a compression garment">
+        </div>
+        <div class="history-text">
+          <h2>Patient-Centered Service</h2>
+          <p>
+            Great Lakes utilizes trained compression therapy fitters with many years of experience working
+            with lymphatic and venous disorder patients. We provide education and support on an individual
+            basis to enhance the results of treatment and improve the patient's quality of life.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROW 3: image LEFT, text RIGHT (you can change wording or add more here later) -->
+    <section class="history-row">
+      <div class="history-inner">
+        <div class="history-image">
+          <img src="images/BLFSTL_IG_MCE_CMPFLX_STD_CF_sofa_talk_NA-US (1).jpg" alt="Great Lakes team supporting patients">
+        </div>
+        <div class="history-text">
+          <h2>Experience You Can Trust</h2>
+          <p>
+            Great Lakes is dedicated to servicing the patient and physician or therapist with delivery,
+            support, education, and insurance reimbursement information. In addition to BioCompression
+            compression devices for lymphedema, chronic venous insufficiency, non-healing wounds,
+            arterial insufficiency and deep vein thrombosis, we supply both daytime compression garments
+            and inelastic wraps and well as a variety of nighttime garments.
+          </p>
+        </div>
+      </div>  
+    </section>
+
+    <!-- MISSION STATEMENT BLOCK -->
+    <section class="mission-block">
+      <h2>Mission Statement</h2>
+      <p>
+        At Great Lakes we specialize in supplying high-quality compression therapy products and service.
+        Great Lakes utilizes trained compression therapy fitters with many years of experience working with
+        lymphatic and venous disorder patients. We provide education &amp; support on an individual basis
+        to enhance the results of treatment and improve the patient’s quality of life. We will endeavor to
+        provide the right equipment for the right patient based on our years of experience in providing
+        specialized Medical Equipment.
+      </p>
+    </section>
+
   </main>
+
+  <footer class="footer-disclaimer">
+    <p>
+      <span class="disclaimer-label">Disclaimer -</span>
+    This site is designed for educational and promotional purposes only and is not engaged in rendering 
+    medical advice or professional services. The information provided here should not be used for diagnosing 
+    or treating a health problem or disease. It is not a substitute for professional care. If you have, or 
+    suspect you may have, a health problem, you should consult your physician. This information is provided in 
+    good faith, but no warranty can be made for its accuracy. The opinions expressed herein are exclusively ours. 
+    If you have any questions, please contact us.
+    </p>
+  </footer>
+  <footer class="footer-main">
+    <div class="footer-main-inner">
+
+      <!-- LEFT: photo + short line -->
+      <div class="footer-main-left">
+        <!-- replace image path with whatever you want -->
+        <img
+          src="images/goldseal_national.png"
+          alt="Gold Seal"
+          class="footer-main-img"
+        >
+        <p class="footer-main-tagline">Great Lakes Medical Equipment</p> 
+        <p>Accredited by the Joint Commission 2006-2022</p>
+        <p>BOC 2022-Current</p>
+      </div>
+
+      <!-- RIGHT: columns -->
+      <div class="footer-main-right">
+
+        <!-- Column: Company -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="history.html">History</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="privacypractices.html">Privacy Practices</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+          </ul>
+        </div>
+
+        <!-- Column: Contact Us -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Contact Us</h4>
+          <ul class="footer-contact">
+            <li>
+              <span class="footer-contact-icon">📍</span>
+              <span>123 Main Street, Suite 100<br>Jackson, MI 49201</span>
+            </li>
+            <li>
+              <span class="footer-contact-icon">📞</span>
+              <span>Phone: 517-536-7350</span>
+            </li>
+            <li>
+              <span class="footer-contact-icon">📠</span>
+              <span>Fax: 517-555-1234</span>
+            </li>
+            <li>
+              <span class="footer-contact-icon">✉️</span>
+              <span>info@greatlakesmedicalequipment.com</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column: Follow Us -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Follow Us</h4>
+          <div class="footer-social">
+            <!-- replace # with real URLs when you have them -->
+            <a href="#" class="social-circle" aria-label="Facebook">f</a>
+            <a href="#" class="social-circle" aria-label="Instagram">i</a>
+            <a href="#" class="social-circle" aria-label="LinkedIn">in</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
