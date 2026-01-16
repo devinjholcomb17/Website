@@ -1268,7 +1268,7 @@ video {
 /* Full-width light green background for the entire services area */
 .services-section {
     width: 100%;
-    background: #c8f1d4; /* slightly greener than before (#dbf5e3 → #c8f1d4) */
+    background: #5a97b1; /* slightly greener than before (#dbf5e3 → #c8f1d4) */
     padding: 90px 0 100px;
     margin-top: 60px;
 }
